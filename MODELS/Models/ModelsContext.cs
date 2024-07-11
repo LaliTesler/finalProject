@@ -18,8 +18,8 @@ namespace MODELS.Models
         {
         }
         public DbSet<CV>cv{ get; set; }
-        public DbSet<Users> Users { get; set; }
-        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Users> users { get; set; }
+        public DbSet<Job> jobs { get; set; }
 
     }
 }

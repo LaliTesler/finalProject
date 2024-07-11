@@ -1,32 +1,44 @@
-using Serilog;
+using DAL.Data;
+using DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using MODELS.Models;
-
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
-
+//
 // Add services to the container.
-
+string myCors = "_myCors";
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-Log.Logger = new LoggerConfiguration()
-.WriteTo.File(@"C:\Users\The user\Documents\.netCore\FinalProject", rollingInterval: RollingInterval.Day)
-.CreateLogger();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddCors(op =>
+{
+    op.AddPolicy(myCors,
+        builder =>
+        {
+            builder.WithOrigins("*")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+});
+
 
 //connection string
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ModelsContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultDataBase")));
+builder.Services.AddScoped<ICV, CVData>();
+builder.Services.AddScoped<IJob, JobData>();
+builder.Services.AddScoped<IUsers, UsersData>();
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(myCors);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

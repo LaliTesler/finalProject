@@ -12,9 +12,9 @@ namespace MODELS.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
+        public long id { get; set; }
         public string firstName { get; set; }
-        public string lalstName { get; set; }
+        public string lastName { get; set; }
         public string mail { get; set; }
         public int phon { get; set; }
         public string profile { get; set; }

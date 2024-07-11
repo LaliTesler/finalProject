@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "qhm8LuCAuveadZOvJLx/+jgZeVm9spsjHp4NBzj168rnHbbipTYX4WxrZ0D4L26lGW8fmSxzG9OG01zfQTRMUw==",
+  "dgSpecHash": "JYuTOQURWTkBT6MJSghccIR9Dt2k2eKHK6H5BdxODp54SAM1RzX9bPT2DD1Pb318wGyy5ez5oxk33NuxUAsoNg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\The user\\Documents\\.netCore\\BL\\BL.csproj",
+  "projectFilePath": "C:\\Users\\The user\\Documents\\.NetCor\\.netCore\\BL\\BL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\The user\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\The user\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\The user\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",
     "C:\\Users\\The user\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.0\\microsoft.entityframeworkcore.abstractions.6.0.0.nupkg.sha512",

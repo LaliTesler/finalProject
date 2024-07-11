@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "44rpiuT5ake4ISKvECzMEFsOgAMjgR2clPNRGjE0NSU3s5nvIOzw/9fc+VVPSIgevRdyaeqfmv67a04Bf0tLCQ==",
+  "dgSpecHash": "/hAhxjxEzdSY674bVXES+qdbPfSzm3lVhsRHvL1IztIm23x422MHjBFEIDyEGAnw6nuOf2860fnpkreqU86DUg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\The user\\Documents\\.netCore\\DAL\\DAL.csproj",
+  "projectFilePath": "C:\\Users\\The user\\Documents\\.NetCor\\.netCore\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\The user\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\The user\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\The user\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",
     "C:\\Users\\The user\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.0\\microsoft.entityframeworkcore.abstractions.6.0.0.nupkg.sha512",

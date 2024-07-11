@@ -13,7 +13,7 @@ namespace MODELS.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
+        public long id { get; set; }
         public string title  { get; set; }
         public string city { get; set; }
         public string description { get; set; }

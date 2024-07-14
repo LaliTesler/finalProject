@@ -53,7 +53,7 @@ namespace DAL.Data
             CV currentcv = await _Context.cv.FindAsync(id);
             if (currentcv == null) { return false; }
             currentcv.profile = updatecv.profile;
-            currentcv.id = id;
+            currentcv.userId = id;
             currentcv.mail = updatecv.mail; 
             currentcv.skills=updatecv.skills;
             currentcv.phon=updatecv.phon;   

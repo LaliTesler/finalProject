@@ -53,8 +53,8 @@ namespace DAL.Data
             currentjob.title = updatejob.title;
             currentjob.description = updatejob.description; 
             currentjob.requirements=updatejob.requirements;
-            currentjob.id=id;
-            currentjob.applicant=updatejob.applicant;   
+            currentjob.jobId=id;
+            currentjob.userId=updatejob.userId;   
             currentjob.city=currentjob.city;
             currentjob.experience=currentjob.experience;    
        

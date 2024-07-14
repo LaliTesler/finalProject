@@ -52,11 +52,8 @@ namespace DAL.Data
             {
                 return false;
             }
-            currentuser.id = updateuser.id;
-            currentuser.userJobs = updateuser.userJobs;
-            currentuser.saveJobs = updateuser.saveJobs;
+            currentuser.userId = id;
             currentuser.password = updateuser.password;
-            currentuser.usercv = updateuser.usercv;
             currentuser.lastName = updateuser.lastName;
             currentuser.firstName = updateuser.firstName;
 

@@ -33,13 +33,13 @@ namespace FinalProject.Controllers
                 return Ok();
             return BadRequest();
         }
+
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(long id)
+        public async Task<IEnumerable<CVJobs>> Get(long id)
         {
-            CVJobs cv = await _dbCV.GetCVJobs(id);
-            if (cv == null)
-                return BadRequest();
-            return Ok(cv);
+            var cv = await _dbCV.GetCVJobs(id);
+
+            return cv;
         }
 
     }

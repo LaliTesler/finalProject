@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace DAL.Data
 {
@@ -37,18 +39,17 @@ namespace DAL.Data
             return true;
         }
 
-        public async Task<CVJobs> GetCVJobs(long id)
+        public async Task<IEnumerable<CVJobs>> GetCVJobs(long id)
         {
-            CVJobs c = await _Context.cvJobs.FindAsync(id);
+            var c = await _Context.cvJobs.Where(x => x.jobId == id).ToListAsync();
             if (c == null)
             {
                 return null;
             }
             return c;
-
         }
 
-      
+
 
     }
 }

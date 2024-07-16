@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 namespace DAL.Data
 {
     public class JobData:IJob 
@@ -24,6 +26,15 @@ namespace DAL.Data
             await _Context.jobs.AddAsync(_mapper.Map<Job>(j));
             await _Context.SaveChangesAsync();
             return true;
+        }
+        public async Task<IEnumerable<Job>> GetAllJobs(long id)
+        {
+            var c = await _Context.jobs.Where(x => x.userId == id).ToListAsync();
+            if (c == null)
+            {
+                return null;
+            }
+            return c;
         }
 
         public async Task<bool> DeleteJob(long id)
@@ -45,6 +56,7 @@ namespace DAL.Data
             return j;
 
         }
+        
 
         public async Task<bool> UpdateJob(long id, JobDTO updatejob)
         {

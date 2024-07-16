@@ -13,7 +13,7 @@ namespace DAL.Interfaces
     {
         Task<bool> CreateCVJobs(CVJobsDTO c);
         Task<bool> DeleteCVJobs(long id);
-        Task<CVJobs> GetCVJobs(long id);
+        Task<IEnumerable<CVJobs>> GetCVJobs(long id);
      
     }
 }

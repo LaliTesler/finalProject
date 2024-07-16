@@ -36,14 +36,10 @@ namespace FinalProject.Controllers
             return BadRequest();
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(long id)
+        public async Task<Users> Get(long id)
         {
             Users user = await _dbuser.GetUser(id);
-            if (user == null)
-            {
-                return BadRequest();
-            }
-            return Ok();
+            return user;
         }
 
         [HttpPut("{id}")]

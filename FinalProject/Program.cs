@@ -3,6 +3,7 @@ using DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using MODELS.Models;
 using AutoMapper;
+using FinalProject.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 //
@@ -32,15 +33,20 @@ builder.Services.AddScoped<ICV, CVData>();
 builder.Services.AddScoped<IJob, JobData>();
 builder.Services.AddScoped<IUsers, UsersData>();
 builder.Services.AddScoped<ICVJobs, CVJobsData>();
-
+builder.Services.AddTransient<IdCheckMiddleware>();
 var app = builder.Build();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<IdCheckMiddleware>();
+
 app.UseCors(myCors);
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

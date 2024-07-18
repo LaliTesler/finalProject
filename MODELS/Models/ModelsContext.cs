@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
+
+
 namespace MODELS.Models
 {
     public class ModelsContext: DbContext
@@ -21,7 +23,7 @@ namespace MODELS.Models
         public DbSet<Users> users { get; set; }
         public DbSet<Job> jobs { get; set; }
         public DbSet<CVJobs> cvJobs { get; set; }
-
+       
 
     }
 }

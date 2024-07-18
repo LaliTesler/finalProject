@@ -87,3 +87,4 @@ C:\Users\The user\Documents\.NetCor\.netCore\FinalProject\obj\Debug\net6.0\scope
 C:\Users\The user\Documents\.NetCor\.netCore\FinalProject\obj\Debug\net6.0\FinalProject.csproj.CopyComplete
 C:\Users\The user\Documents\.NetCor\.netCore\FinalProject\obj\Debug\net6.0\FinalProject.genruntimeconfig.cache
 C:\Users\The user\Documents\.NetCor\.netCore\FinalProject\obj\Debug\net6.0\ref\FinalProject.dll
+C:\Users\The user\Documents\.NetCor\.netCore\FinalProject\bin\Debug\net6.0\Newtonsoft.Json.dll

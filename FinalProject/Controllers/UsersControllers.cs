@@ -9,10 +9,15 @@ namespace FinalProject.Controllers
     [ApiController]
     public class UsersControllers : ControllerBase
     {
+        private readonly IServiceProvider _serviceProvider;
+
+        
         private readonly IUsers _dbuser;
-        public UsersControllers(IUsers user)
+        public UsersControllers(IUsers user, IServiceProvider serviceProvider)
         {
             _dbuser = user;
+            _serviceProvider = serviceProvider;
+
         }
 
         [HttpPost]

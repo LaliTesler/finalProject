@@ -15,6 +15,7 @@ namespace MODELS.Models
         public long cvJobsId { get; set; }
         [ForeignKey("cvId")]
         public long userId { get; set; }
+
         [ForeignKey("jobId")]
         public long jobId { get; set; }
        

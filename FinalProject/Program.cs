@@ -14,6 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.AddCors(op =>
 {
     op.AddPolicy(myCors,
@@ -34,6 +35,8 @@ builder.Services.AddScoped<IJob, JobData>();
 builder.Services.AddScoped<IUsers, UsersData>();
 builder.Services.AddScoped<ICVJobs, CVJobsData>();
 builder.Services.AddTransient<IdCheckMiddleware>();
+builder.Services.AddTransient<AllowingAccessMiddleware>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,6 +47,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<IdCheckMiddleware>();
+app.UseMiddleware<AllowingAccessMiddleware>();
+
 
 app.UseCors(myCors);
 

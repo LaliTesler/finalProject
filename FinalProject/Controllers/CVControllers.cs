@@ -32,10 +32,17 @@ namespace FinalProject.Controllers
                 return Ok();
             return BadRequest();
         }
-        [HttpGet("{id}")]
+        [HttpGet("CV/{id}")]
         public async Task<CV> Get(long id)
         {
-            CV cv = await _dbCV.GetCV(id);
+            CV cv = await _dbCV.GetCVById(id);
+            return cv;
+        }
+        [HttpGet("AllCV")]
+        public async Task<IEnumerable<CV>> Get( )
+        {
+            var cv = await _dbCV.GetAllCV();
+
             return cv;
         }
 

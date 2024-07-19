@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Microsoft.EntityFrameworkCore;
 namespace DAL.Data
 {
     public class UsersData : IUsers
@@ -45,6 +45,17 @@ namespace DAL.Data
             }
             return u;
         }
+
+        public async Task<IEnumerable<Users>> GetAllUsers(long id)
+        {
+            var u = await _Context.users.ToListAsync();
+            if (u == null)
+            {
+                return null;
+            }
+            return u;
+        }
+
         public async Task<bool> UpdateUser(long id, UsersDTO updateuser)
         {
             Users currentuser = await _Context.users.FindAsync(id);
@@ -57,6 +68,7 @@ namespace DAL.Data
             currentuser.password = updateuser.password;
             currentuser.lastName = updateuser.lastName;
             currentuser.firstName = updateuser.firstName;
+            currentuser.isAdmin=updateuser.isAdmin;
 
             await _Context.SaveChangesAsync();
             return true;

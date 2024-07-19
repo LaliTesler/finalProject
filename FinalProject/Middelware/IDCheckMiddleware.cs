@@ -18,12 +18,6 @@ namespace FinalProject.Middleware
 
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
-            if (context.Request.Method == HttpMethods.Delete || context.Request.Method == HttpMethods.Get)
-            {
-                await next(context);
-                return;
-            }
-
             // Check if the path starts with /api/Users
             if (!context.Request.Path.StartsWithSegments("/api/UsersControllers"))
             {
@@ -31,6 +25,14 @@ namespace FinalProject.Middleware
                 await next(context);
                 return;
             }
+
+            if (context.Request.Method == HttpMethods.Delete || context.Request.Method == HttpMethods.Get)
+            {
+                await next(context);
+                return;
+            }
+
+         
 
 
             string requestBody;

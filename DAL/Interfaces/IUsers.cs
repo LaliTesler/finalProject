@@ -14,5 +14,7 @@ namespace DAL.Interfaces
         Task<bool> DeleteUser(long id);
         Task<Users> GetUser(long id);
         Task<bool> UpdateUser(long id, UsersDTO updatecv);
+        Task<IEnumerable<Users>> GetAllUsers(long id);
+
     }
 }

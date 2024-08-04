@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\The user\\Documents\\.NetCor\\.netCore\\MODELS\\MODELS.csproj": {}
+    "C:\\Users\\The user\\Documents\\.NetCor\\FinalProject2\\MODELS\\MODELS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\The user\\Documents\\.NetCor\\.netCore\\MODELS\\MODELS.csproj": {
+    "C:\\Users\\The user\\Documents\\.NetCor\\FinalProject2\\MODELS\\MODELS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\The user\\Documents\\.NetCor\\.netCore\\MODELS\\MODELS.csproj",
+        "projectUniqueName": "C:\\Users\\The user\\Documents\\.NetCor\\FinalProject2\\MODELS\\MODELS.csproj",
         "projectName": "MODELS",
-        "projectPath": "C:\\Users\\The user\\Documents\\.NetCor\\.netCore\\MODELS\\MODELS.csproj",
+        "projectPath": "C:\\Users\\The user\\Documents\\.NetCor\\FinalProject2\\MODELS\\MODELS.csproj",
         "packagesPath": "C:\\Users\\The user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\The user\\Documents\\.NetCor\\.netCore\\MODELS\\obj\\",
+        "outputPath": "C:\\Users\\The user\\Documents\\.NetCor\\FinalProject2\\MODELS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -48,6 +48,14 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "JWT": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
               "version": "[2.1.1, )"
@@ -75,6 +83,14 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             }
           },
           "imports": [

@@ -2,10 +2,14 @@
 using DAL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+
 using MODELS.Models;
 
 namespace FinalProject.Controllers
 {
+    [Authorize]
+
     [Route("api/[controller]")]
     [ApiController]
     public class CVJobsControllers : ControllerBase

@@ -3,9 +3,13 @@ using DAL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MODELS.Models;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace FinalProject.Controllers
 {
+    [Authorize]
+
     [Route("api/[controller]")]
     [ApiController]
     public class JobControllers : ControllerBase

@@ -3,6 +3,8 @@ using DAL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MODELS.Models;
+using Microsoft.AspNetCore.Authorization;
+
 namespace FinalProject.Controllers
 {
     [Route("api/[controller]")]

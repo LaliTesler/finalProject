@@ -21,6 +21,10 @@ namespace DAL.Data
         }
         public async Task<bool> CreateUser(UsersDTO u)
         {
+            if (!IsValidIsraeliId(u.id))
+            {
+                return false;
+            }
             await _Context.users.AddAsync(_mapper.Map<Users>(u));
             await _Context.SaveChangesAsync();
             return true;
@@ -73,6 +77,36 @@ namespace DAL.Data
             await _Context.SaveChangesAsync();
             return true;
         }
+        private bool IsValidIsraeliId(long id)
+        {
+            if (id < 100000000 || id > 999999999)
+            {
+                return false;
+            }
 
+            int sum = 0;
+            long temp = id;
+            for (int i = 8; i >= 0; i--)
+            {
+                int digit = (int)(temp % 10);
+                temp /= 10;
+
+                if (i % 2 == 1)
+                {
+                    digit *= 2;
+                }
+
+                if (digit > 9)
+                {
+                    digit -= 9;
+                }
+
+                sum += digit;
+            }
+
+            return sum % 10 == 0;
+        }
     }
+
 }
+

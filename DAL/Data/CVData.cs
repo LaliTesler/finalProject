@@ -30,7 +30,7 @@ namespace DAL.Data
             return true;    
         }
 
-        public async Task<bool> DeleteCV(long id)
+        public async Task<bool> DeleteCV(string id)
         {
             CV c=await _Context.cv.FindAsync (id);
             if (c == null) { return false; }    
@@ -39,7 +39,7 @@ namespace DAL.Data
             return true;
         }
 
-        public async Task<CV>GetCVById(long id)
+        public async Task<CV>GetCVById(string id)
         {
             CV c = await _Context.cv.FindAsync(id);
             if (c == null)
@@ -59,7 +59,7 @@ namespace DAL.Data
             return c;
         }
 
-        public async Task<bool> UpdateCV(long id, CVDTO updatecv)
+        public async Task<bool> UpdateCV(string id, CVDTO updatecv)
         {
             CV currentcv = await _Context.cv.FindAsync(id);
             if (currentcv == null) { return false; }

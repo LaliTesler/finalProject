@@ -16,7 +16,7 @@ namespace DAL.DTO
         public string description { get; set; }
         public string requirements { get; set; }
         public string experience { get; set; }
-        public long userId { get; set; }
+        public string userId { get; set; }
 
     }
 }

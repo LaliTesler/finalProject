@@ -13,6 +13,6 @@ namespace DAL.DTO
         public long cvJobsId { get; set; }
 
         public long jobId { get; set; }
-        public long userId { get; set; }
+        public string userId { get; set; }
     }
 }

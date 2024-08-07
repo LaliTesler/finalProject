@@ -44,9 +44,9 @@ namespace FinalProject.Controllers
 
         }
         [HttpGet("AllJobsById/{id}", Name = "GetAllJobs")]
-        public async Task<IEnumerable<Job>> GetAllJobsById(long id)
+        public async Task<IEnumerable<Job>> GetAllJobsById(string userid)
         {
-            var jobs = await _dbJob.GetAllJobsById(id);
+            var jobs = await _dbJob.GetAllJobsById(userid);
             return jobs;
         }
 

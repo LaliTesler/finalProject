@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using BL.Interfaces;
+using BL.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -87,6 +89,8 @@ builder.Services.AddScoped<ICV, CVData>();
 builder.Services.AddScoped<IUsers, UsersData>();
 builder.Services.AddScoped<IJob, JobData>();
 builder.Services.AddScoped<ICVJobs, CVJobsData>();
+builder.Services.AddScoped<ILogIn, LogIn>();
+
 
 // Register TokenValidationMiddleware with a secret key
 builder.Services.AddTransient<TokenValidationMiddleware>(provider =>

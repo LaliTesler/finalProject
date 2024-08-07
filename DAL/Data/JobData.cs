@@ -27,7 +27,7 @@ namespace DAL.Data
             await _Context.SaveChangesAsync();
             return true;
         }
-        public async Task<IEnumerable<Job>> GetAllJobsById(long id)
+        public async Task<IEnumerable<Job>> GetAllJobsById(string id)
         {
             var c = await _Context.jobs.Where(x => x.userId == id).ToListAsync();
             if (c == null)

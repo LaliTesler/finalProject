@@ -11,10 +11,10 @@ namespace DAL.Interfaces
     public interface IUsers
     {
         Task<bool> CreateUser(UsersDTO c);
-        Task<bool> DeleteUser(long id);
-        Task<Users> GetUser(long id);
-        Task<bool> UpdateUser(long id, UsersDTO updatecv);
-        Task<IEnumerable<Users>> GetAllUsers(long id);
+        Task<bool> DeleteUser(string id);
+        Task<Users> GetUser(string id);
+        Task<bool> UpdateUser(string id, UsersDTO updatecv);
+        Task<IEnumerable<Users>> GetAllUsers(string id);
 
     }
 }

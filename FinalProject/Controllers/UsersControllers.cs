@@ -32,34 +32,34 @@ namespace FinalProject.Controllers
             }
             return BadRequest();
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(long id)
+        [HttpDelete("{userid}")]
+        public async Task<IActionResult> Delete(string userid)
         {
-            bool delete = await _dbuser.DeleteUser(id);
+            bool delete = await _dbuser.DeleteUser(userid);
             if (delete)
             {
                 return Ok();
             }
             return BadRequest();
         }
-        [HttpGet("user/{id}", Name = "GetUser")]
-        public async Task<Users> GetUser(long id)
+        [HttpGet("user/{userid}", Name = "GetUser")]
+        public async Task<Users> GetUser(string userid)
         {
-            Users user = await _dbuser.GetUser(id);
+            Users user = await _dbuser.GetUser(userid);
             return user;
         }
 
-        [HttpGet("AllUsers/{id}",Name = "GetAllUsers")]
-        public async Task<IEnumerable<Users>> GetAllUsers(long id)
+        [HttpGet("AllUsers/{userid}", Name = "GetAllUsers")]
+        public async Task<IEnumerable<Users>> GetAllUsers(string userid)
         {
-            var users = await _dbuser.GetAllUsers(id);
+            var users = await _dbuser.GetAllUsers(userid);
             return users;
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(long id, [FromBody] UsersDTO value)
+        [HttpPut("{userid}")]
+        public async Task<IActionResult> Put(string userid, [FromBody] UsersDTO value)
         {
-            bool update = await _dbuser.UpdateUser(id, value);
+            bool update = await _dbuser.UpdateUser(userid, value);
             if (update)
             {
                 return Ok();

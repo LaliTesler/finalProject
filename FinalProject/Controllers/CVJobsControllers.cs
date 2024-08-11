@@ -39,11 +39,16 @@ namespace FinalProject.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IEnumerable<CVJobs>> Get(long id)
+        public async Task<IActionResult> Get(long id)
         {
-            var cv = await _dbCV.GetCVJobs(id);
+            var cvJobs = await _dbCV.GetCVJobs(id);
 
-            return cv;
+            if (cvJobs == null || !cvJobs.Any())
+            {
+                return NotFound("No CV jobs found for the given ID."); // מחזיר 404 אם לא נמצאו משרות לקורות החיים
+            }
+
+            return Ok(cvJobs); // מחזיר 200 עם רשימת המשרות לקורות החיים
         }
 
     }

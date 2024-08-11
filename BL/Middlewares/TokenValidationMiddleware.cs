@@ -10,7 +10,6 @@ public class TokenValidationMiddleware : IMiddleware
 {
     private readonly string _secretKey;
 
-
     public TokenValidationMiddleware(string secretKey)
     {
         _secretKey = secretKey;
@@ -18,14 +17,12 @@ public class TokenValidationMiddleware : IMiddleware
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
-
-        if (!context.Request.Path.StartsWithSegments("/api/LogInController"))
-        {
-            await next(context);
-            return;
-        }
-
-        var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+        if (context.Request.Path.StartsWithSegments("/api/SignUpLoginControllers"))
+                   {
+                       await next(context);
+                       return;
+                  }
+            var token = context.Request.Cookies["AuthToken"];
 
         if (token != null && IsTokenValid(token))
         {

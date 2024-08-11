@@ -27,7 +27,7 @@ namespace FinalProject.Controllers
                 return Ok();
             return BadRequest();
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("{userid}")]
         public async Task<IActionResult>Delete(string userid)
         {
             bool delete=await _dbCV.DeleteCV(userid);
@@ -36,17 +36,28 @@ namespace FinalProject.Controllers
             return BadRequest();
         }
         [HttpGet("CV/{id}")]
-        public async Task<CV> Get(string userid)
+       
+        public async Task<IActionResult> GetCVByID(string userId)
         {
-            CV cv = await _dbCV.GetCVById(userid);
-            return cv;
+            CV cv = await _dbCV.GetCVById(userId);
+            if (cv == null)
+            {
+                return NotFound(); // מחזיר 404 אם קורות החיים לא נמצאו
+            }
+            return Ok(cv); // מחזיר 200 עם אובייקט קורות החיים
         }
-        [HttpGet("AllCV")]
-        public async Task<IEnumerable<CV>> Get( )
-        {
-            var cv = await _dbCV.GetAllCV();
 
-            return cv;
+        [HttpGet("AllCV")]
+        public async Task<IActionResult> GetAllCV()
+        {
+            var cvList = await _dbCV.GetAllCV();
+
+            if (cvList == null || !cvList.Any())
+            {
+                return NotFound("No CVs found."); // מחזיר 404 אם אין קורות חיים
+            }
+
+            return Ok(cvList); // מחזיר 200 עם רשימת קורות החיים
         }
 
         [HttpPut("{userid}")]

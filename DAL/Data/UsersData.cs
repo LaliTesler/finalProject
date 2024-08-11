@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+
 namespace DAL.Data
 {
     public class UsersData : IUsers
@@ -50,15 +53,28 @@ namespace DAL.Data
             return u;
         }
 
-        public async Task<IEnumerable<Users>> GetAllUsers(string id)
+        public async Task<IActionResult> GetAllUsers(string id)
         {
-            var u = await _Context.users.ToListAsync();
-            if (u == null)
+            var currentUser = await _Context.users.FindAsync(id);
+            if (currentUser == null)
             {
-                return null;
+                return new NotFoundObjectResult("Current user not found."); // מחזיר 404 אם המשתמש הנוכחי לא נמצא
             }
-            return u;
+
+            if (currentUser.isAdmin == 0)
+            {
+                return new ObjectResult("You are not authorized to view all users.") { StatusCode = StatusCodes.Status403Forbidden }; // מחזיר 403 אם המשתמש לא מנהל
+            }
+
+            var users = await _Context.users.ToListAsync();
+            if (users == null || !users.Any())
+            {
+                return new NotFoundObjectResult("No users found."); // מחזיר 404 אם לא נמצאו משתמשים
+            }
+
+            return new OkObjectResult(users); // מחזיר 200 עם רשימת המשתמשים
         }
+
 
         public async Task<bool> UpdateUser(string id, UsersDTO updateuser)
         {

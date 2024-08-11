@@ -37,24 +37,42 @@ namespace FinalProject.Controllers
             return BadRequest();
         }
         [HttpGet("job/{id}", Name = "GetJob")]
-        public async Task<Job> GetJob(long id)
+        public async Task<IActionResult> GetJob(long id)
         {
             Job job = await _dbJob.GetJob(id);
-            return job;
 
+            if (job == null)
+            {
+                return NotFound("Job not found."); // מחזיר 404 אם המשרה לא נמצאה
+            }
+
+            return Ok(job); // מחזיר 200 עם אובייקט המשרה
         }
+
         [HttpGet("AllJobsById/{id}", Name = "GetAllJobs")]
-        public async Task<IEnumerable<Job>> GetAllJobsById(string userid)
+        public async Task<IActionResult> GetAllJobsById(string userId)
         {
-            var jobs = await _dbJob.GetAllJobsById(userid);
-            return jobs;
+            var jobs = await _dbJob.GetAllJobsById(userId);
+
+            if (jobs == null || !jobs.Any())
+            {
+                return NotFound("No jobs found for the given user ID."); // מחזיר 404 אם לא נמצאו משרות
+            }
+
+            return Ok(jobs); // מחזיר 200 עם רשימת המשרות
         }
 
         [HttpGet("AllJobs")]
-        public async Task<IEnumerable<Job>> GetAllJobs()
+        public async Task<IActionResult> GetAllJobs()
         {
             var jobs = await _dbJob.GetAllJobs();
-            return jobs;
+
+            if (jobs == null || !jobs.Any())
+            {
+                return NotFound("No jobs found."); // מחזיר 404 אם לא נמצאו משרות
+            }
+
+            return Ok(jobs); // מחזיר 200 עם רשימת המשרות
         }
 
         [HttpPut("{id}")]

@@ -32,6 +32,9 @@ namespace FinalProject.Controllers
             }
             return BadRequest();
         }
+
+        [Authorize]
+
         [HttpDelete("{userid}")]
         public async Task<IActionResult> Delete(string userid)
         {
@@ -42,19 +45,44 @@ namespace FinalProject.Controllers
             }
             return BadRequest();
         }
+
+        [Authorize]
+
         [HttpGet("user/{userid}", Name = "GetUser")]
-        public async Task<Users> GetUser(string userid)
+        public async Task<IActionResult> GetUser(string userId)
         {
-            Users user = await _dbuser.GetUser(userid);
-            return user;
+            Users user = await _dbuser.GetUser(userId);
+
+            if (user == null)
+            {
+                return NotFound("User not found."); // מחזיר 404 אם המשתמש לא נמצא
+            }
+
+            return Ok(user); // מחזיר 200 עם אובייקט המשתמש
         }
 
-        [HttpGet("AllUsers/{userid}", Name = "GetAllUsers")]
-        public async Task<IEnumerable<Users>> GetAllUsers(string userid)
+
+        [Authorize]
+
+        [HttpGet("AllUsers/{userId}", Name = "GetAllUsers")]
+        public async Task<IActionResult> GetAllUsers(string userId)
         {
-            var users = await _dbuser.GetAllUsers(userid);
-            return users;
+            var result = await _dbuser.GetAllUsers(userId);
+
+            if (result is NotFoundResult)
+            {
+                return NotFound("No users found."); // מחזיר 404 אם לא נמצאו משתמשים
+            }
+
+            if (result is ForbidResult)
+            {
+                return Forbid("You are not authorized to view all users."); // מחזיר 403 אם המשתמש לא מנהל
+            }
+
+            return Ok(result); // מחזיר 200 עם רשימת המשתמשים
         }
+
+        [Authorize]
 
         [HttpPut("{userid}")]
         public async Task<IActionResult> Put(string userid, [FromBody] UsersDTO value)

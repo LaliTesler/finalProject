@@ -1,4 +1,5 @@
 ﻿using DAL.DTO;
+using Microsoft.AspNetCore.Mvc;
 using MODELS.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace DAL.Interfaces
         Task<bool> DeleteUser(string id);
         Task<Users> GetUser(string id);
         Task<bool> UpdateUser(string id, UsersDTO updatecv);
-        Task<IEnumerable<Users>> GetAllUsers(string id);
+        Task<IActionResult> GetAllUsers(string id);
 
     }
 }
